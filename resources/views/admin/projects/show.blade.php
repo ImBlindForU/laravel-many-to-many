@@ -10,6 +10,13 @@
             <h5 class="text-primary">{{$project->type ? $project->type->name : "Nessun tipo"}}</h5>
             <p>{{ $project->slug }}</p>
         </div>
+        <div class="technologies">
+            @forelse ($technologies as $technology)
+                <span>{{$technology->name}}</span>
+            @empty
+                <span>Nessuna Tecnologia</span>
+            @endforelse
+        </div>
         <div class="text-center">
             <img src="{{asset('storage/'.$project->cover_image)}}" alt="">
         </div>
