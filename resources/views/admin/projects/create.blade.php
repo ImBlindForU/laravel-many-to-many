@@ -46,6 +46,20 @@
                     </div>
 
 
+                    <div class="form-group mb-3">
+                        <h4>Technologies</h4>
+
+                        @foreach ($technologies as $technology)
+                        <div class="form-check">
+                            <input type="checkbox" name="technology[]" value="{{$technology->id}}"  id="technology-{{$technology->id}}" class="form-check-input">
+                            <label for="technology-{{$technology->id}}" class="form-check-label">{{$technology->name}}</label>
+                        </div>
+                        @endforeach
+                        
+                    </div>
+
+
+
                     {{-- img --}}
                     <div class="form-group mb-3">
                         <label for="cover_image">Immagine</label>

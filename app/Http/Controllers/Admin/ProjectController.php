@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,7 +32,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create',compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create',compact('types','technologies'));
     }
 
     /**
@@ -50,6 +52,10 @@ class ProjectController extends Controller
             $validated['cover_image']= $path;
         }
         $project = Project::create($validated);
+
+        if($request->has('technologies')){
+            $project->technologies()->attach($request->technologies);
+        }
         return redirect()->route('admin.project.index')->with('message','il project e stato creato con successo');
     }
 
