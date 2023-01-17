@@ -51,7 +51,7 @@
 
                         @foreach ($technologies as $technology)
                         <div class="form-check">
-                            <input type="checkbox" name="technology[]" value="{{$technology->id}}"  id="technology-{{$technology->id}}" class="form-check-input">
+                            <input type="checkbox" name="technologies[]" value="{{$technology->id}}"  id="technology-{{$technology->id}}" class="form-check-input">
                             <label for="technology-{{$technology->id}}" class="form-check-label">{{$technology->name}}</label>
                         </div>
                         @endforeach
